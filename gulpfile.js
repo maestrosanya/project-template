@@ -2,7 +2,7 @@ var gulp        = require('gulp'), // Подключаем Gulp
     sass        = require('gulp-sass'), //Подключаем Sass пакет,
     browserSync = require('browser-sync'), // Подключаем Browser Sync
     concat      = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
-    uglify      = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
+    uglify      = require('gulp-uglify'), // Подключаем gulp-uglify (для сжатия JS)
     cssnano     = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
     rename      = require('gulp-rename'), // Подключаем библиотеку для переименования файлов;
     del         = require('del'),  // Подключаем библиотеку для удаления файлов и папок
@@ -26,7 +26,8 @@ gulp.task('sass', function () {
 gulp.task('scripts', function () {
     return gulp.src([
         'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js'
+        'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
+        'app/libs/slick-carousel/slick/slick.min.js'
     ])
         .pipe(concat('libs.min.js'))
         .pipe(uglify())
