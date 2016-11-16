@@ -25,8 +25,16 @@ npm install
 "imagemin-pngquant": "^5.0.0"
 "del": "^2.2.2"
 
+Фреймворк:
+
+bootstrap-3
+
 Плагины:
 
-bootstrap
 magnific-popup
 slick-carousel
+
+Шрифты:
+
+Open Sans Condensed (Open Sans, 300, 300 italic, 400, 400 italic, 600, 600 italic, 700, 700 italic, 800, 800 italic)
+FontAwesome
