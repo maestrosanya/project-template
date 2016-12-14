@@ -9,10 +9,18 @@ var gulp        = require('gulp'), // Подключаем Gulp
     imagemin    = require('gulp-imagemin'),  // Подключаем библиотеку для работы с изображениями
     pngquant    = require('imagemin-pngquant'), // Подключаем библиотеку для работы с png
     cache       = require('gulp-cache'), // Подключаем библиотеку кеширования
-    autoprefixer = require('gulp-autoprefixer');// Подключаем библиотеку для автоматического добавления префиксов
+    autoprefixer = require('gulp-autoprefixer'),// Подключаем библиотеку для автоматического добавления префиксов
+    jade        = require('gulp-jade'); // Подключаем шаблонизатор Jade
 
 //  Таски ( Инструкции )
 
+gulp.task('jade', function () {
+    return gulp.src('app/jade/pages/*.jade')
+        .pipe(jade({
+            pretty: true
+        }))
+        .pipe(gulp.dest('app'));
+});
 
 
 gulp.task('sass', function () {
@@ -50,10 +58,11 @@ gulp.task('css-libs', ['sass'], function () {
         .pipe(gulp.dest('app/css'));
 });
  
-gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function () {
+gulp.task('watch', ['jade', 'browser-sync', 'css-libs', 'scripts'], function () { 
     gulp.watch('app/sass/**/*.+(scss|sass)', ['sass']);
     gulp.watch('app/**/*.html', browserSync.reload );
     gulp.watch('app/js/**/*.js', browserSync.reload );
+    gulp.watch(['app/jade/**/*.jade'], ['jade'], browserSync.reload);
 });
 
 gulp.task('clean', function () {
