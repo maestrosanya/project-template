@@ -9,6 +9,9 @@ cd project-template
 
 npm install
 
+Шаблонизатор:
+Jade
+
 Пакеты:
 
 "bower": "^1.8.0"
